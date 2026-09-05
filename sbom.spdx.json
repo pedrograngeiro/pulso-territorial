@@ -1,0 +1,50 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "Mapa-do-Silencio-0.1.0",
+  "documentNamespace": "https://mapa-do-silencio.invalid/spdx/0.1.0/20260830",
+  "creationInfo": {
+    "created": "2026-09-05T19:08:55Z",
+    "creators": [
+      "Tool: tools/verify.py"
+    ],
+    "licenseListVersion": "3.27"
+  },
+  "packages": [
+    {
+      "name": "Mapa do Silêncio",
+      "SPDXID": "SPDXRef-Package-MapaDoSilencio",
+      "versionInfo": "0.1.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "Project license approval pending; see LICENSE-PROPOSAL.md."
+    },
+    {
+      "name": "CPython",
+      "SPDXID": "SPDXRef-Package-CPython",
+      "versionInfo": "3.13.7",
+      "downloadLocation": "https://www.python.org/downloads/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Python-2.0",
+      "licenseDeclared": "Python-2.0",
+      "copyrightText": "Copyright Python Software Foundation",
+      "comment": "External runtime; not bundled in this repository."
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-MapaDoSilencio"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-MapaDoSilencio",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-CPython"
+    }
+  ]
+}

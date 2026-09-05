@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090f13">
+  <meta name="description" content="Explore onde os sinais diminuem. Um observatório territorial de silêncio digital, com replay e evidências por município.">
+  <title>Mapa do Silêncio — Observatório</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="icon-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z M9 3v15 M15 6v15"/></symbol>
+    <symbol id="icon-signal" viewBox="0 0 24 24"><path d="M3 13h4l3-9 4 16 3-9h4"/></symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m3 7 9-5 9 5-9 5Zm0 5 9 5 9-5M3 17l9 5 9-5"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="icon-rain" viewBox="0 0 24 24"><path d="M6 14a4 4 0 0 1-1-8 6 6 0 0 1 11-1 4.5 4.5 0 0 1 2 9M8 17l-1 3m6-3-1 3m6-3-1 3"/></symbol>
+  </defs></svg>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Mapa do Silêncio, início"><span class="brand-mark"><svg><use href="#icon-signal"/></svg></span><span>MAPA <span class="brand-light">DO</span><br>SILÊNCIO<span class="brand-period">.</span></span></a>
+    <div class="workspace-label"><svg><use href="#icon-map"/></svg>Observatório territorial</div>
+    <div class="topbar-end"><span class="demo-badge"><i></i><span id="data-mode">DEMONSTRAÇÃO</span></span><button class="icon-button about-button" id="about-button" aria-label="Sobre o Mapa do Silêncio"><svg><use href="#icon-info"/></svg></button></div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Resumo territorial">
+      <div class="sidebar-intro"><p class="eyebrow">ESCUTAR A AUSÊNCIA</p><h1>Onde os sinais<br>deixam de chegar.</h1><p>Explore mudanças na atividade digital ao longo do território.</p></div>
+      <div class="overview"><div><span id="silence-count">—</span><p>em silêncio</p></div><div><span id="region-count">—</span><p>monitorados</p></div></div>
+      <div class="list-heading"><h2>Municípios</h2><span class="mono" id="frame-label">— / —</span></div>
+      <div id="region-list" class="region-list"><p class="loading-message" role="status">Carregando cenário…</p></div>
+      <div class="sidebar-bottom">
+        <details class="sources"><summary><svg><use href="#icon-layers"/></svg>Fontes do cenário<span id="source-count">—</span></summary><div id="source-list"></div></details>
+        <div class="concept-note"><svg><use href="#icon-info"/></svg><p>Silêncio é uma pista.<br><strong>Não é uma confirmação de desastre.</strong></p></div>
+        <p class="sidebar-foot mono" id="data-note">DADOS SINTÉTICOS · SEM CONEXÃO COM O X</p>
+      </div>
+    </aside>
+    <main class="workspace" id="workspace">
+      <div class="map-canvas" id="map-canvas" tabindex="0" role="region" aria-label="Mapa interativo. Arraste para mover. Use as setas para navegar e mais ou menos para zoom.">
+        <div id="tiles" class="tiles" aria-hidden="true"></div><div class="map-vignette"></div><div class="map-grid"></div>
+        <svg id="map-overlay" class="map-overlay" aria-label="Sequência de detecção do silêncio"><defs><filter id="line-glow"><feGaussianBlur stdDeviation="4"/></filter></defs><g id="state-boundary"></g><g id="connections-glow" filter="url(#line-glow)"></g><g id="connections"></g></svg>
+        <div id="map-markers"></div>
+      </div>
+      <div class="map-heading"><p class="eyebrow">BRASIL <span>/</span> <span id="state-label">RIO DE JANEIRO</span></p><h2 id="map-title">Um estado. Muitos sinais.</h2><div class="map-subtitle"><span class="status-dot"></span><span id="map-summary">Preparando observações</span></div></div>
+      <div class="map-tools" aria-label="Controles do mapa"><button id="zoom-in" class="icon-button" aria-label="Aproximar mapa">+</button><button id="zoom-out" class="icon-button" aria-label="Afastar mapa">−</button><span></span><button id="reset-map" class="icon-button" aria-label="Enquadrar municípios"><svg><use href="#icon-target"/></svg></button></div>
+      <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 30 38"><path d="M15 3 23 30 15 24Z" fill="#a0b6b8"/><path d="M15 3 7 30 15 24Z" fill="#3d5158"/></svg></div>
+      <section class="detail-card" aria-labelledby="selected-name">
+        <div class="detail-heading"><p class="eyebrow">SINAL LOCAL</p><span class="status-tag" id="selected-status">—</span></div>
+        <h2 id="selected-name">Selecione um município</h2><p class="coordinates mono" id="selected-coordinates">—</p>
+        <div class="activity-value"><strong id="activity-change">—</strong><div>atividade digital<span>em relação ao esperado</span></div></div>
+        <svg id="local-chart" class="local-chart" viewBox="0 0 260 76" role="img" aria-label="Histórico da atividade digital do município"></svg>
+        <div class="chart-legend"><span><i></i>Observado</span><span><i class="expected-key"></i>Esperado</span></div>
+        <div class="measurement-row"><span>Observado / esperado</span><strong id="activity-numbers">—</strong></div>
+        <div class="measurement-row"><span><svg><use href="#icon-rain"/></svg>Chuva no cenário</span><strong id="rain-value">—</strong></div>
+        <div class="measurement-row"><span>Relatos no cenário</span><strong id="reports-value">—</strong></div>
+        <div class="detail-note"><span class="status-dot"></span><p id="detail-explanation">As evidências aparecerão aqui.</p></div>
+      </section>
+      <div class="map-bottom"><div class="map-legend"><span><i class="normal-key"></i>Esperado</span><span><i class="silence-key"></i>Silêncio</span><span><i class="spike-key"></i>Pico de relatos</span></div><p id="tile-status" class="tile-status" role="status" hidden>Mapa-base indisponível. Posições do cenário preservadas.</p></div>
+      <section class="timeline-panel" aria-labelledby="timeline-title">
+        <div class="timeline-heading"><div class="timeline-title"><svg><use href="#icon-signal"/></svg><h2 id="timeline-title">Linha do tempo</h2><span class="replay-badge">REPLAY</span></div><div class="time-display"><span id="current-date">—</span><time class="mono" id="current-time">—</time><span class="timezone">BRT</span></div></div>
+        <div class="timeline-controls"><button id="play-button" class="play-button" aria-label="Reproduzir cenário" disabled><span class="play-symbol"></span></button><div class="timeline-track"><div id="activity-chart" class="activity-chart" aria-hidden="true"></div><input id="timeline" type="range" min="0" max="0" value="0" step="1" aria-label="Etapa da linha do tempo" disabled><div id="timeline-labels" class="timeline-labels mono"></div></div><button id="speed-button" class="speed-button" aria-label="Velocidade de reprodução: 1 vez">1×</button></div>
+        <div class="timeline-foot"><span><i></i>Volume de atividade digital agregado</span><span id="sequence-note">Arraste a linha do tempo para investigar.</span></div>
+      </section>
+      <footer class="map-attribution"><span>Posições aproximadas · círculos sem escala de impacto</span><span><a href="https://servicodados.ibge.gov.br/api/docs/malhas?versao=3" target="_blank" rel="noreferrer">IBGE</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></span></footer>
+      <div id="error-panel" class="error-panel" hidden role="alert"><h2>Não foi possível abrir o cenário.</h2><p>Confira se o servidor está disponível e tente novamente.</p><button id="retry-button">Tentar novamente</button></div>
+    </main>
+  </div>
+  <dialog id="about-dialog"><button id="close-about" class="icon-button dialog-close" aria-label="Fechar explicação">×</button><p class="eyebrow">MAPA DO SILÊNCIO</p><h2>A ausência também<br>carrega informação.</h2><p>Este observatório compara a atividade digital de cada município com seu padrão esperado. Uma queda incomum pode indicar uma região que merece ser verificada.</p><p id="about-data">O replay atual usa dados sintéticos.</p><p>As conexões mostram a ordem de detecção do silêncio, sem afirmar a trajetória ou a origem de uma enchente.</p><p>A cartografia vem do OpenStreetMap e requer internet. Os pontos são posições aproximadas do cenário; os círculos não representam áreas afetadas.</p><div class="dialog-note">Nenhuma publicação do X está sendo coletada. Nenhum alerta operacional é emitido.</div></dialog>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
