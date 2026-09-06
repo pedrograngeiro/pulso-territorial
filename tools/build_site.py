@@ -18,6 +18,11 @@ def main() -> None:
     output.mkdir(exist_ok=True)
     for name in ("index.html", "styles.css", "app.js", "map.js", "model.js", "ioda.html", "ioda.css", "ioda-view.js", "rio-state.geojson", "monitoring.html", "monitoring.css", "monitoring.js", "monitoring-model.js", "rio-municipalities.geojson"):
         shutil.copy2(ROOT / "src" / "mapa_silencio" / "static" / name, output / name)
+    for name in ("LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"):
+        shutil.copy2(ROOT / name, output / name)
+    legal_dir = output / "docs" / "third-party"
+    legal_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT / "docs" / "third-party" / "ibge-malha-notas.pdf", legal_dir / "ibge-malha-notas.pdf")
     document = build_rio_document()
     scenario = {**document, "analysis": analyze_dataset(document)}
     (output / "scenario.json").write_text(json.dumps(scenario, ensure_ascii=False), encoding="utf-8")

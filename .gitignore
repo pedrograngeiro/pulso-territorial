@@ -7,3 +7,11 @@ dist/
 artifacts/*.tar.gz
 
 .cache/
+
+# Local tooling, deployment metadata and credentials
+.openai/
+skills-lock.json
+.env
+.env.*
+!.env.example
+artifacts/

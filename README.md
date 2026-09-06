@@ -2,6 +2,8 @@
 
 **Conectividade, relatos e lacunas de observação em um mapa.**
 
+[![CI](https://github.com/pedrograngeiro/pulso-territorial/actions/workflows/ci.yml/badge.svg)](https://github.com/pedrograngeiro/pulso-territorial/actions/workflows/ci.yml) · [Apache-2.0](LICENSE) · [Contribuir](CONTRIBUTING.md) · [Segurança](SECURITY.md)
+
 Anteriormente chamado Mapa do Silêncio. O novo nome abrange os sinais observados e sua ausência, sem presumir a causa.
 
 Mapa local do Rio de Janeiro com simulação de silêncio digital, conectividade estadual IODA e amostras municipais RIPE Atlas. O consumidor de ocorrências Cloudflare Radar depende de token. Não confirma desastres nem emite alertas.
