@@ -5,7 +5,7 @@
   "name": "Pulso-Territorial-0.1.0",
   "documentNamespace": "https://github.com/pedrograngeiro/pulso-territorial/spdx/0.1.0",
   "creationInfo": {
-    "created": "2026-09-06T00:32:54Z",
+    "created": "2026-09-06T00:38:21Z",
     "creators": [
       "Tool: tools/verify.py"
     ],
@@ -13,15 +13,25 @@
   },
   "packages": [
     {
+      "name": "IBGE Rio de Janeiro geographic assets",
+      "SPDXID": "SPDXRef-Package-IBGE",
+      "downloadLocation": "https://servicodados.ibge.gov.br/api/v3/malhas/estados/33",
+      "filesAnalyzed": false,
+      "licenseConcluded": "CC-BY-4.0",
+      "licenseDeclared": "CC-BY-4.0",
+      "copyrightText": "Instituto Brasileiro de Geografia e Estatistica (IBGE)",
+      "comment": "API-minimum state and municipal boundaries, accessed 2026-09-05; edition unspecified. Accompanying IBGE technical note included. See THIRD_PARTY_NOTICES.md."
+    },
+    {
       "name": "Pulso Territorial",
       "SPDXID": "SPDXRef-Package-PulsoTerritorial",
       "versionInfo": "0.1.0",
-      "downloadLocation": "NOASSERTION",
+      "downloadLocation": "https://github.com/pedrograngeiro/pulso-territorial",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "comment": "Project license approval pending; see LICENSE-PROPOSAL.md."
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2026 Pedro Grangeiro and contributors",
+      "comment": "Original material: Apache-2.0. IBGE assets retain CC-BY-4.0; see NOTICE."
     },
     {
       "name": "CPython",
@@ -36,6 +46,11 @@
     }
   ],
   "relationships": [
+    {
+      "spdxElementId": "SPDXRef-Package-PulsoTerritorial",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Package-IBGE"
+    },
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
       "relationshipType": "DESCRIBES",

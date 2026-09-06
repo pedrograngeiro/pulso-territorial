@@ -18,7 +18,7 @@ O repositório contém links/citações a documentos oficiais para pesquisa. Lin
 
 ## Licença do projeto
 
-A licença do código e dos dados sintéticos ainda depende de aprovação; veja `LICENSE-PROPOSAL.md` e o ADR proposto. Não interpretar esta nota como concessão de licença.
+Código, documentação original e dados sintéticos próprios: Apache-2.0, conforme LICENSE e NOTICE. As exceções de terceiros mantêm suas próprias condições.
 
 ## Contorno estadual do Rio de Janeiro
 
@@ -28,4 +28,14 @@ A malha simplificada do estado (código 33) foi obtida da API de Malhas do IBGE 
 
 A malha dos 92 municípios fluminenses foi obtida do [IBGE](https://servicodados.ibge.gov.br/api/v3/malhas/estados/33?formato=application/vnd.geo%2Bjson&qualidade=minima&intrarregiao=municipio), qualidade mínima, em 2026-09-05. Nomes: [API de Localidades](https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios). O arquivo `rio-municipalities.geojson` adiciona nomes, códigos e centros cartográficos calculados à geometria oficial. Não serve para localizar endereços com precisão.
 
-A tela local consulta RIPE Atlas / RIPE NCC e, quando configurado, Cloudflare Radar. Os consumidores são implementações independentes; não incorporam código desses serviços. Fontes e links são exibidos na interface. Dados de sondas são normalizados sem expor seus IPs ou coordenadas. Relatos do Radar são atribuídos e vinculados à origem. Dados externos não herdam a licença proposta do projeto.
+A tela local consulta RIPE Atlas / RIPE NCC e, quando configurado, Cloudflare Radar. Os consumidores são implementações independentes; não incorporam código desses serviços. Fontes e links são exibidos na interface. Dados de sondas são normalizados sem expor seus IPs ou coordenadas. Relatos do Radar são atribuídos e vinculados à origem. Dados externos não herdam a licença do material próprio.
+
+## Condições cartográficas e das APIs
+
+Os dois GeoJSON IBGE mantêm condições compatíveis com [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), fundamentadas nas [notas metodológicas 01/2024](https://biblioteca.ibge.gov.br/visualizacao/livros/liv102152.pdf). A [nota integral](docs/third-party/ibge-malha-notas.pdf) acompanha os arquivos. Fonte: IBGE; alterações: simplificação entregue pela API, reorganização de metadados e adição de nomes, IDs e centros calculados no arquivo municipal. Coleta: 05/09/2026; edição cartográfica não determinada. Não há endosso do IBGE ao projeto.
+
+- IODA: copyright Georgia Tech Research Corporation, conforme retorno da API; snapshots não redistribuídos.
+- RIPE Atlas: [termos RIPE NCC v3.4](https://atlas.ripe.net/assets/legal/RIPEAtlasServiceTermsandConditionsV3.4.pdf), incluindo permissão prévia para uso comercial de dados.
+- Cloudflare Radar: dados da API sob [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), conforme [About](https://radar.cloudflare.com/about). Apache dos consumidores não remove essa restrição.
+
+[Pesquisa completa](docs/research/LICENSE_RESEARCH.md).

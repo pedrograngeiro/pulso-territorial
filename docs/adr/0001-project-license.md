@@ -1,7 +1,9 @@
 ---
-status: proposed
+status: accepted
 ---
 
-# Propor Apache-2.0 para o código, sem adotá-la ainda
+# Adotar Apache-2.0 para o material próprio
 
-O projeto tem finalidade pública com possibilidade de uso comercial, deve poder operar como SaaS ou self-hosted e precisa ser adotável por órgãos públicos e parceiros. A recomendação técnica é Apache-2.0: permissiva, amplamente adotada e com concessão explícita de patentes. AGPL-3.0 preservaria abertura de alterações oferecidas por rede, mas pode reduzir adoção empresarial, exigir análise de combinação e dificultar alguns parceiros; código proprietário só se justifica quando existir modelo comercial claro e governança capaz de manter uma fronteira auditável com componentes/dados abertos. A licença de código não altera ODbL/CC BY/termos de dados. A decisão permanece **proposta** até aprovação do responsável e validação jurídica de distribuição, patentes, contribuições, SaaS, dependências futuras e compatibilidade com parceiros públicos.
+O Pulso Territorial busca facilitar uso e colaboração por comunidades, pesquisadores, órgãos públicos e empresas. Adotamos Apache-2.0 para código, documentação original e dados sintéticos próprios pela permissão de reutilização e pela concessão explícita de patentes, aceitando que serviços derivados possam manter modificações fechadas; MIT oferece um texto menor e AGPL-3.0 priorizaria reciprocidade de versões modificadas acessíveis pela rede.
+
+A licença própria não substitui licenças cartográficas nem termos das APIs. A publicação inclui código, documentação, fixtures sintéticas e assets com atribuição; caches de observações e credenciais ficam excluídos. [Pesquisa](../research/LICENSE_RESEARCH.md), [exceções](../../THIRD_PARTY_NOTICES.md).

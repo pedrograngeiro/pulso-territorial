@@ -67,7 +67,7 @@ Para gerar a versão estática, execute `python tools/build_site.py`. O diretór
 ## Documentação
 
 - [Fontes de dados](docs/DATA_SOURCES.md) e [pesquisa primária](docs/research/SOURCE_RESEARCH.md)
-- [Matriz de licenças](docs/LICENSE_MATRIX.md) e [proposta de licença](LICENSE-PROPOSAL.md)
+- [Matriz de licenças](docs/LICENSE_MATRIX.md) e [decisão de licença](LICENSE-PROPOSAL.md)
 - [Arquitetura](docs/ARCHITECTURE.md) e [glossário](CONTEXT.md)
 - [Privacidade](docs/PRIVACY.md), [modelo de ameaças](docs/THREAT_MODEL.md) e [validação](docs/VALIDATION_PLAN.md)
 - [Avisos de terceiros](THIRD_PARTY_NOTICES.md)
@@ -128,3 +128,11 @@ A API aceita o token por header no backend; ele não entra no HTML, JSON públic
 Cada fonte mantém cache independente de cinco minutos. Falhas preservam a coleta anterior com aviso e permitem nova tentativa após um minuto. A página pausa consultas enquanto está oculta. Não há monitoramento contínuo sem consultas ao servidor. A exportação estática precisa desses endpoints para funcionar com dados reais.
 
 Validação das novas fontes: `python -m unittest discover -s tests -p test_monitoring.py -v` e `node --test tests/monitoring.test.mjs`. Os testes usam fixtures controladas; o RIPE Atlas também foi consultado de verdade. Cloudflare autenticado ainda precisa ser validado com uma credencial válida.
+
+## Licença
+
+Copyright 2026 Pedro Grangeiro e contribuidores. Código, documentação original e dados sintéticos próprios sob **[Apache-2.0](LICENSE)**. Permite reutilização, inclusive comercial, com as obrigações de avisos e atribuição aplicáveis.
+
+**Dados externos têm condições separadas:** IBGE sob CC BY 4.0; dados da API Cloudflare Radar sob CC BY-NC 4.0; dados RIPE Atlas sujeitos a permissão prévia para uso comercial; dados IODA sem concessão aberta de redistribuição identificada. O repositório não distribui caches de observações reais.
+
+Veja [NOTICE](NOTICE), [avisos de terceiros](THIRD_PARTY_NOTICES.md) e [comparação das licenças](docs/research/LICENSE_RESEARCH.md).

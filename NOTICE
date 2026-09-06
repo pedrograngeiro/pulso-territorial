@@ -1,0 +1,16 @@
+Pulso Territorial
+Copyright 2026 Pedro Grangeiro and contributors
+
+Original code, documentation, and synthetic fixtures are licensed under the
+Apache License, Version 2.0. See LICENSE.
+
+IBGE geographic assets and the accompanying technical note retain their
+CC BY 4.0-compatible terms, separately from the code license.
+Source: Instituto Brasileiro de Geografia e Estatistica (IBGE).
+Modifications: API-simplified boundaries; municipality names, identifiers
+and calculated cartographic centers added by Pulso Territorial.
+See THIRD_PARTY_NOTICES.md and docs/third-party/ibge-malha-notas.pdf.
+
+IODA, RIPE Atlas, Cloudflare Radar, OpenStreetMap and Google Fonts retain
+their respective data rights and terms. Real observation caches and API
+credentials are not distributed in this repository.

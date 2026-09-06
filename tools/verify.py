@@ -34,7 +34,7 @@ def main() -> None:
         {
             "generated_at": generated_at(),
             "project_version": "0.1.0",
-            "project_license": "NOASSERTION (approval pending)",
+            "project_license": "Apache-2.0",
             "direct_package_dependencies": [],
             "transitive_package_dependencies": [],
             "external_runtime": {"name": "CPython", "version": platform_python_version(), "spdx": "Python-2.0"},
@@ -74,15 +74,25 @@ def build_sbom() -> dict[str, object]:
         },
         "packages": [
             {
+                "name": "IBGE Rio de Janeiro geographic assets",
+                "SPDXID": "SPDXRef-Package-IBGE",
+                "downloadLocation": "https://servicodados.ibge.gov.br/api/v3/malhas/estados/33",
+                "filesAnalyzed": False,
+                "licenseConcluded": "CC-BY-4.0",
+                "licenseDeclared": "CC-BY-4.0",
+                "copyrightText": "Instituto Brasileiro de Geografia e Estatistica (IBGE)",
+                "comment": "API-minimum state and municipal boundaries, accessed 2026-09-05; edition unspecified. Accompanying IBGE technical note included. See THIRD_PARTY_NOTICES.md.",
+            },
+            {
                 "name": "Pulso Territorial",
                 "SPDXID": "SPDXRef-Package-PulsoTerritorial",
                 "versionInfo": "0.1.0",
-                "downloadLocation": "NOASSERTION",
+                "downloadLocation": "https://github.com/pedrograngeiro/pulso-territorial",
                 "filesAnalyzed": False,
                 "licenseConcluded": "NOASSERTION",
-                "licenseDeclared": "NOASSERTION",
-                "copyrightText": "NOASSERTION",
-                "comment": "Project license approval pending; see LICENSE-PROPOSAL.md.",
+                "licenseDeclared": "Apache-2.0",
+                "copyrightText": "Copyright 2026 Pedro Grangeiro and contributors",
+                "comment": "Original material: Apache-2.0. IBGE assets retain CC-BY-4.0; see NOTICE.",
             },
             {
                 "name": "CPython",
@@ -97,6 +107,7 @@ def build_sbom() -> dict[str, object]:
             },
         ],
         "relationships": [
+            {"spdxElementId": "SPDXRef-Package-PulsoTerritorial", "relationshipType": "CONTAINS", "relatedSpdxElement": "SPDXRef-Package-IBGE"},
             {"spdxElementId": "SPDXRef-DOCUMENT", "relationshipType": "DESCRIBES", "relatedSpdxElement": "SPDXRef-Package-PulsoTerritorial"},
             {"spdxElementId": "SPDXRef-Package-PulsoTerritorial", "relationshipType": "DEPENDS_ON", "relatedSpdxElement": "SPDXRef-Package-CPython"},
         ],

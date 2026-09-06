@@ -1,13 +1,12 @@
-# Proposta de licença — decisão humana pendente
+# Decisão de licença — Apache-2.0
 
-Nenhuma licença definitiva foi adotada. Até a aprovação, o repositório não concede direitos além dos previstos em lei.
+A proposta inicial foi substituída pela adoção de **Apache-2.0** para código, documentação original e dados sintéticos próprios do Pulso Territorial, na preparação do repositório público.
 
-## Estratégias consideradas
+A escolha favorece reutilização, inclusive comercial, e inclui concessão explícita de patentes dos contribuidores. Não exige abrir modificações de serviços derivados. MIT seria mais curta; AGPL-3.0 priorizaria reciprocidade de serviços modificados.
 
-- **Apache-2.0 — recomendada tecnicamente:** ampla adoção, uso comercial e redistribuição permissivos, aviso preservado e concessão explícita de patentes. Favorece integração em órgãos públicos, empresas, SaaS e instalações próprias, mas não obriga que alterações de rede permaneçam abertas.
-- **AGPL-3.0:** garante oferta do código-fonte correspondente a usuários de versões modificadas acessíveis por rede. É coerente se reciprocidade de SaaS for objetivo central, porém pode reduzir adoção empresarial, criar incompatibilidades e aumentar revisão jurídica de integrações.
-- **Proprietária com componentes abertos:** preserva exclusividade comercial, mas aumenta custo de governança e pode conflitar com a finalidade pública. Só deve ser escolhida após modelo de receita, titularidade e estratégia de parceiros estarem claros.
+- [Texto integral adotado](LICENSE)
+- [Pesquisa com fontes primárias](docs/research/LICENSE_RESEARCH.md)
+- [Decisão registrada](docs/adr/0001-project-license.md)
+- [Exceções e atribuições](THIRD_PARTY_NOTICES.md)
 
-## Recomendação
-
-Validar Apache-2.0 para o código e definir licença separada para dados sintéticos e documentação. Bases ODbL, conteúdos CC BY e termos de API permanecem sob seus próprios instrumentos. Pontos jurídicos: titularidade/contribuições, política de marcas, patentes, distribuição de base derivada ODbL, tratamento LGPD e contratos de dados. Esta é análise técnica, não aconselhamento jurídico.
+A licença própria não altera direitos de dados externos: IBGE mantém CC BY 4.0; dados da API Cloudflare Radar são CC BY-NC 4.0; uso comercial dos dados RIPE Atlas depende de permissão; não foi identificada concessão aberta de redistribuição dos dados IODA.

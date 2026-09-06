@@ -23,7 +23,7 @@ A pesquisa detalhada, com acesso, retenção, exclusão, custos, privacidade e l
 | ONS | Carga macrorregional | Download/API CKAN, conjuntos CC BY | **Restrita e contextual** |
 | Anatel | Qualidade/interrupções históricas | Exports oficiais por recurso | **Restrita; não tempo real** |
 | OpenStreetMap data | Vias/rios/POIs | Extratos/APIs conforme ODbL | **Restrita à ODbL** |
-| `tile.openstreetmap.org` | Basemap | Uso moderado conforme política | **Rejeitado como backend do MVP** |
+| `tile.openstreetmap.org` | Basemap | Uso moderado conforme política | **Ativo no navegador; política própria** |
 | IBGE malha municipal | Limites/códigos municipais | Download oficial, edição conferida | **Aprovada, CC BY 4.0** |
 
 ## Regras de admissão
@@ -55,3 +55,7 @@ O evento retrospectivo recomendado é a enchente do Rio Grande do Sul de abril�
 **Cloudflare Radar.** [Acesso](https://developers.cloudflare.com/radar/get-started/first-request/) e [ocorrências](https://developers.cloudflare.com/api/resources/radar/subresources/annotations/subresources/outages/methods/get/). Integração local autorizada; consumidor implementado, sem token disponível nesta sessão. A validação autenticada permanece pendente. Finalidade: relatos contextuais brasileiros dos últimos sete dias, com menções geográficas explícitas. Token somente no backend, escopo de leitura Radar conforme guia oficial; custo/cota contratual não aferidos. Limite local de 300 ocorrências por coleta. Texto limitado e URLs validadas; não inferir geografia de ASN. Cache em memória, sem persistência automática. Atribuição e links à fonte. Nenhum aceite ou publicação externa realizado.
 
 **Malha municipal IBGE.** 92 municípios do RJ obtidos da API v3 de Malhas, qualidade mínima; nomes da API v1 de Localidades. Incorporada em `static/rio-municipalities.geojson`, com fonte e data registradas no arquivo. Limites simplificados e localização ofuscada das sondas restringem a precisão. Pontos não associados não são atribuídos ao município mais próximo.
+
+## Direitos das fontes integradas
+
+A pesquisa identificou condições comerciais específicas para dados RIPE Atlas e Cloudflare Radar. Consulte [pesquisa](research/LICENSE_RESEARCH.md) e [matriz](LICENSE_MATRIX.md). A autorização para publicar código não altera esses termos; caches reais não integram o GitHub.
