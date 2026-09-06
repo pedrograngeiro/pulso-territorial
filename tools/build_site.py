@@ -16,14 +16,14 @@ from mapa_silencio.rio_demo import build_rio_document
 def main() -> None:
     output = ROOT / "dist"
     output.mkdir(exist_ok=True)
-    for name in ("index.html", "styles.css", "app.js", "map.js", "model.js"):
+    for name in ("index.html", "styles.css", "app.js", "map.js", "model.js", "ioda.html", "ioda.css", "ioda-view.js", "rio-state.geojson", "monitoring.html", "monitoring.css", "monitoring.js", "monitoring-model.js", "rio-municipalities.geojson"):
         shutil.copy2(ROOT / "src" / "mapa_silencio" / "static" / name, output / name)
     document = build_rio_document()
     scenario = {**document, "analysis": analyze_dataset(document)}
     (output / "scenario.json").write_text(json.dumps(scenario, ensure_ascii=False), encoding="utf-8")
     assert scenario["metadata"]["data_nature"] == "simulated"
     assert len(scenario["analysis"]["timeline"]) == 8
-    print(f"Site estático gerado em {output}: 5 arquivos de interface e cenário sintético.")
+    print(f"Site estático gerado em {output}: interface e cenário sintético. As telas de dados reais requerem o servidor Python.")
 
 
 if __name__ == "__main__":

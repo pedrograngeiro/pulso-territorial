@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mapa do Silêncio — Monitoramento local</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/ioda.css"><link rel="stylesheet" href="/monitoring.css"></head>
+<body class="monitoring-view">
+<svg class="icon-defs" aria-hidden="true"><defs><symbol id="icon-signal" viewBox="0 0 24 24"><path d="M3 13h4l3-9 4 16 3-9h4"/></symbol><symbol id="icon-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/></symbol></defs></svg>
+<header class="topbar"><a class="brand" href="/"><span class="brand-mark"><svg><use href="#icon-signal"/></svg></span><span>MAPA DO<br>SILÊNCIO<span class="brand-period">.</span></span></a><nav class="data-nav" aria-label="Origem dos dados"><a href="/">Simulação</a><a href="/ioda.html">Estado · IODA</a><a href="/monitoring.html" aria-current="page">Monitoramento local</a></nav></header>
+<div class="app-shell">
+<aside class="sidebar">
+<div class="sidebar-intro"><p class="eyebrow">RIPE ATLAS / CLOUDFLARE RADAR</p><h1>Onde podemos<br>observar.</h1><p>Sondas públicas e ocorrências reportadas. Cobertura municipal aproximada.</p></div>
+<div class="live-status"><strong id="ripe-status" role="status">Consultando sondas…</strong><p id="ripe-time">Aguardando a primeira coleta.</p></div>
+<p id="ripe-error" class="collection-error" role="alert" hidden></p>
+<div class="coverage-summary"><strong id="coverage-total">— / 92</strong><span>municípios com medição recente</span></div>
+<label class="search-label" for="city-search">Buscar município</label><input id="city-search" type="search" placeholder="Nome do município" autocomplete="off">
+<div id="municipality-list" class="municipality-list" aria-label="Municípios do Rio de Janeiro"></div>
+<p class="coverage-note">Sem observação não significa internet normal. Uma sonda representa apenas sua conexão e os destinos testados.</p>
+<a class="source-link" href="https://atlas.ripe.net/probes/" target="_blank" rel="noreferrer">Consultar sondas no RIPE Atlas ↗</a>
+</aside>
+<main class="workspace">
+<div class="map-canvas" id="map-canvas" tabindex="0" role="region" aria-label="Cobertura municipal aproximada. Arraste ou use as setas para mover."><div id="tiles" class="tiles" aria-hidden="true"></div><div class="map-vignette"></div><div class="map-grid"></div><svg class="map-overlay" aria-label="Municípios do Rio de Janeiro"><g id="state-boundary"></g><g id="connections-glow"></g><g id="connections"></g></svg><div id="map-markers"></div></div>
+<div class="map-heading"><p class="eyebrow">RIO DE JANEIRO / 92 MUNICÍPIOS</p><h2>Amostras locais</h2><p class="map-subtitle">Preenchimento indica observação, não risco</p><p id="geometry-error" hidden>Malha municipal indisponível.</p></div>
+<div class="map-tools"><button class="icon-button" id="zoom-in" aria-label="Aproximar mapa">+</button><button class="icon-button" id="zoom-out" aria-label="Afastar mapa">−</button><button class="icon-button" id="reset-map" aria-label="Enquadrar estado"><svg><use href="#icon-target"/></svg></button></div>
+<section class="detail-card" aria-labelledby="city-name"><div class="detail-heading"><p class="eyebrow">AMOSTRA RIPE ATLAS</p><span id="city-status" class="status-tag">Aguardando</span></div><h2 id="city-name">Selecione um município</h2><p id="city-summary" class="coverage-note">Não há estimativa de população conectada.</p><div id="probe-list" class="probe-list"></div><p class="coverage-note">Ping IPv4 para K-root e F-root. Medição recente: até 15 minutos. Perda de pacotes vale apenas para esse teste.</p></section>
+<div class="map-bottom"><div class="map-legend"><span><i class="observed-key"></i>Com medição recente</span><span><i class="old-key"></i>Sondas sem medição recente</span><span><i class="empty-key"></i>Sem observação</span></div><p id="tile-status" class="tile-status" hidden>Mapa-base indisponível. Malha municipal preservada.</p></div>
+<section class="radar-panel" aria-labelledby="radar-title"><div class="radar-heading"><div><p class="eyebrow">OCORRÊNCIAS REPORTADAS</p><h2 id="radar-title">Cloudflare Radar</h2></div><button id="refresh-button" class="refresh-button">Atualizar fontes</button></div><p id="radar-status" role="status">Consultando ocorrências…</p><p id="radar-time" class="coverage-note"></p><p id="radar-error" class="collection-error" role="alert" hidden></p><p id="radar-note" class="coverage-note">Brasil · últimos 7 dias. Menções ao RJ não delimitam uma área afetada.</p><div id="event-list" class="event-list"></div><a class="source-link" href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noreferrer">Consultar no Cloudflare Radar ↗</a></section>
+<footer class="map-attribution"><span>RIPE Atlas / RIPE NCC · Cloudflare Radar</span><span><a href="https://servicodados.ibge.gov.br/api/docs/malhas?versao=3" target="_blank" rel="noreferrer">Malha IBGE</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></span></footer>
+</main></div><script type="module" src="/monitoring.js"></script>
+</body></html>

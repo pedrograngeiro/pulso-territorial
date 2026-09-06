@@ -23,3 +23,9 @@ A licença do código e dos dados sintéticos ainda depende de aprovação; veja
 ## Contorno estadual do Rio de Janeiro
 
 A malha simplificada do estado (código 33) foi obtida da API de Malhas do IBGE em 2026-09-05 e incorporada em src/mapa_silencio/static/rio-state.geojson. Fonte: <https://servicodados.ibge.gov.br/api/v3/malhas/estados/33?formato=application/vnd.geo%2Bjson&qualidade=minima>. Documentação: <https://servicodados.ibge.gov.br/api/docs/malhas?versao=3>. O IBGE é creditado na interface. Essa geometria é cartografia de referência, independente dos sinais simulados.
+
+## Monitoramento local
+
+A malha dos 92 municípios fluminenses foi obtida do [IBGE](https://servicodados.ibge.gov.br/api/v3/malhas/estados/33?formato=application/vnd.geo%2Bjson&qualidade=minima&intrarregiao=municipio), qualidade mínima, em 2026-09-05. Nomes: [API de Localidades](https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios). O arquivo `rio-municipalities.geojson` adiciona nomes, códigos e centros cartográficos calculados à geometria oficial. Não serve para localizar endereços com precisão.
+
+A tela local consulta RIPE Atlas / RIPE NCC e, quando configurado, Cloudflare Radar. Os consumidores são implementações independentes; não incorporam código desses serviços. Fontes e links são exibidos na interface. Dados de sondas são normalizados sem expor seus IPs ou coordenadas. Relatos do Radar são atribuídos e vinculados à origem. Dados externos não herdam a licença proposta do projeto.

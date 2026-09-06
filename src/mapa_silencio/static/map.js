@@ -23,7 +23,8 @@ export class TerritorialMap {
   }
 
   setRegions(regions, geometry) {
-    this.rings = (geometry?.features ?? []).flatMap(feature => feature.geometry.type === 'MultiPolygon' ? feature.geometry.coordinates.flat() : feature.geometry.type === 'Polygon' ? feature.geometry.coordinates : []);
+    this.features = geometry?.features ?? [];
+    this.rings = this.features.flatMap(feature => feature.geometry.type === 'MultiPolygon' ? feature.geometry.coordinates.flat() : feature.geometry.type === 'Polygon' ? feature.geometry.coordinates : []);
     this.element.classList.toggle('state-view', this.rings.length > 0);
     this.regions = regions.filter(region => Array.isArray(region.centroid) && region.centroid.length === 2 && region.centroid.every(Number.isFinite));
     this.markers.replaceChildren();
@@ -48,7 +49,7 @@ export class TerritorialMap {
   }
 
   fit() {
-    if (!this.regions.length) return;
+    if (!this.regions.length && !this.rings?.length) return;
     const { width, height } = this.element.getBoundingClientRect();
     const mobile = window.innerWidth <= 700;
     const compact = window.innerWidth <= 950;
@@ -67,6 +68,12 @@ export class TerritorialMap {
     center[1] += (bottom - top) / 2;
     this.center = unproject(center, this.zoom);
     this.render();
+  }
+
+  setCoverage(coverage, selected) {
+    this.coverage = coverage;
+    this.selectedCoverage = selected;
+    this.renderOverlays();
   }
 
   setSignals(signals, selected, sequence) {
@@ -99,10 +106,24 @@ export class TerritorialMap {
   renderOverlays() {
     const boundary = this.element.querySelector('#state-boundary');
     boundary.replaceChildren();
-    for (const ring of this.rings ?? []) {
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', ring.map((point, index) => `${index ? 'L' : 'M'}${this.screenPoint(point).join(',')}`).join(' ') + 'Z');
-      boundary.append(path);
+    for (const feature of this.features ?? []) {
+      const polygons = feature.geometry.type === 'MultiPolygon' ? feature.geometry.coordinates : [feature.geometry.coordinates];
+      for (const polygon of polygons) {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', polygon.map(ring => ring.map((point, index) => `${index ? 'L' : 'M'}${this.screenPoint(point).join(',')}`).join(' ') + 'Z').join(' '));
+        path.setAttribute('fill-rule', 'evenodd');
+        const id = feature.properties?.id;
+        if (this.coverage && id) {
+          path.dataset.coverage = this.coverage.get(id) || 'unavailable';
+          path.dataset.selected = String(id === this.selectedCoverage);
+          path.addEventListener('pointerdown', event => event.stopPropagation());
+          path.addEventListener('click', () => this.onSelect(id));
+          const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+          title.textContent = feature.properties.name;
+          path.append(title);
+        }
+        boundary.append(path);
+      }
     }
     for (const region of this.regions) {
       const [x, y] = this.screenPoint(region.centroid);

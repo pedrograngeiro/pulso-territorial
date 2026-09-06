@@ -48,3 +48,21 @@ Replay é determinístico e idempotente: o mesmo documento produz a mesma saída
 2. Persistir o documento comum em PostGIS mantendo a interface analítica.
 3. Adicionar primeiro um adaptador de arquivo físico licenciado (ANA/ANEEL), com fixture contratual e sincronização de correções.
 4. Só então avaliar fontes sociais, após RIPD, base legal, termos, TTL, exclusão e limiar de agregação aprovados.
+
+## Consulta real IODA
+
+A rota `/ioda.html` usa `ioda-view.js` e reaproveita `TerritorialMap` para mostrar o contorno estadual. Consulta `/api/ioda`, servido pelo mesmo processo Python. `IodaClient` resolve a região, consulta três séries e eventos em paralelo e normaliza timestamps, lacunas e metadados. `IodaMonitor` compartilha cache entre requisições e conserva a coleta anterior quando a fonte falha.
+
+Esse caminho não passa por `analyze_dataset` e não converte conectividade estadual em observações sociais municipais. O cenário e os endpoints de replay mantêm a simulação. `tools/consume_ioda.py` permite coleta avulsa para arquivo local ignorado pelo Git; não alimenta o cache da interface. Sem scheduler, banco ou credenciais adicionais.
+
+Testes IODA usam envelopes artificiais controlados, sem rede externa. A consulta de verificação real é separada dos testes; seus snapshots não são versionados.
+
+## Observação municipal e ocorrências reportadas
+
+- `territory.py`: associação aproximada de pontos à malha municipal IBGE, com exclusão de uma faixa de 1 km nas bordas. A malha versionada contém 92 municípios e metadados da fonte; nomes vêm da API de Localidades do IBGE.
+- `ripe.py`: catálogo público e resultados existentes de dois pings IPv4. A saída contém apenas campos permitidos: IDs de sondas, estado no catálogo, ASN e resumos de testes. Endereços IP, descrições livres e coordenadas das sondas não entram na API local.
+- `cloudflare.py`: autenticação pelo ambiente do processo, paginação limitada e normalização das ocorrências. Menções textuais não alteram o estado de cobertura RIPE e não classificam risco municipal.
+- `external.py`: leitura HTTPS com limites, tentativas e bloqueio de redirecionamentos; cache independente por fonte. Erros externos não expõem credenciais ou corpos de resposta.
+- `monitoring.html/js/css`: seleção municipal e painel de relatos; `monitoring-model.js` define precedência de indisponibilidade/cache antigo e separação de eventos. `TerritorialMap.setCoverage` colore a disponibilidade de observação municipal sem acionar os detectores sintéticos.
+
+Endpoints novos: `/api/ripe`, `/api/cloudflare`. Não há fusão automática com IODA, inferência de população desconectada, alerta de desastre, medição ativa criada ou banco de dados. A leitura Cloudflare autenticada depende de configuração externa; o modo ausente é explícito.

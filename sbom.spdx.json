@@ -5,7 +5,7 @@
   "name": "Mapa-do-Silencio-0.1.0",
   "documentNamespace": "https://mapa-do-silencio.invalid/spdx/0.1.0/20260830",
   "creationInfo": {
-    "created": "2026-09-05T19:08:55Z",
+    "created": "2026-09-06T00:25:10Z",
     "creators": [
       "Tool: tools/verify.py"
     ],

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090f13"><title>Mapa do Silêncio — IODA · Dados reais</title><meta name="description" content="Conectividade real do estado do Rio de Janeiro, observada pelo IODA."><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/ioda.css"></head>
+<body class="ioda-view">
+  <svg class="icon-defs" aria-hidden="true"><defs>
+    <symbol id="icon-signal" viewBox="0 0 24 24"><path d="M3 13h4l3-9 4 16 3-9h4"/></symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 1v4m0 14v4M1 12h4m14 0h4"/></symbol>
+  </defs></svg>
+  <header class="topbar"><a class="brand" href="/" aria-label="Voltar à simulação"><span class="brand-mark"><svg><use href="#icon-signal"/></svg></span><span>MAPA <span class="brand-light">DO</span><br>SILÊNCIO<span class="brand-period">.</span></span></a><nav class="data-nav" aria-label="Origem dos dados"><a href="/">Simulação</a><a href="/ioda.html" aria-current="page">Estado · IODA</a><a href="/monitoring.html">Monitoramento local</a></nav><div class="topbar-end"><span class="demo-badge"><i></i>FONTE EXTERNA</span></div></header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Fontes de conectividade">
+      <div class="sidebar-intro"><p class="eyebrow">CONECTIVIDADE OBSERVADA</p><h1>O pulso da<br>internet no estado.</h1><p>Medições reais do IODA para o Rio de Janeiro. Cobertura estadual.</p></div>
+      <div class="live-status"><span class="status-dot"></span><strong id="collection-status" role="status">Consultando o IODA…</strong><p id="collection-time">A primeira consulta pode levar alguns segundos.</p></div>
+      <div class="list-heading"><h2>Sinais de conectividade</h2><span class="mono">IODA</span></div>
+      <div id="signal-list" class="region-list"></div>
+      <p id="collection-error" class="collection-error" hidden role="alert"></p>
+      <div class="sidebar-bottom">
+        <div class="scope-note"><p class="eyebrow">RESOLUÇÃO TERRITORIAL</p><strong>Estado do Rio de Janeiro</strong><p>Esta fonte não informa qual município perdeu conexão. O contorno representa a área consultada.</p></div>
+        <a class="source-link" id="ioda-link" href="https://ioda.inetintel.cc.gatech.edu/" target="_blank" rel="noreferrer">Consultar no IODA ↗</a>
+        <p class="sidebar-foot">SEM DADOS SIMULADOS NESTA TELA</p>
+      </div>
+    </aside>
+    <main class="workspace">
+      <div class="map-canvas" id="map-canvas" tabindex="0" role="region" aria-label="Mapa da cobertura estadual do IODA. Arraste ou use as setas para mover.">
+        <div id="tiles" class="tiles" aria-hidden="true"></div><div class="map-vignette"></div><div class="map-grid"></div>
+        <svg class="map-overlay" aria-label="Contorno estadual do Rio de Janeiro"><defs><filter id="line-glow"><feGaussianBlur stdDeviation="4"/></filter></defs><g id="state-boundary"></g><g id="connections-glow"></g><g id="connections"></g></svg><div id="map-markers"></div>
+      </div>
+      <div class="map-heading"><p class="eyebrow">BRASIL / RIO DE JANEIRO</p><h2>Conectividade no RJ</h2><div class="map-subtitle"><span class="status-dot"></span>Área consultada · estado inteiro</div><p id="geometry-status" hidden role="status">Contorno do IBGE indisponível.</p></div>
+      <div class="map-tools" aria-label="Controles do mapa"><button class="icon-button" id="zoom-in" aria-label="Aproximar mapa">+</button><button class="icon-button" id="zoom-out" aria-label="Afastar mapa">−</button><span></span><button class="icon-button" id="reset-map" aria-label="Enquadrar estado"><svg><use href="#icon-target"/></svg></button></div>
+      <section class="detail-card" aria-labelledby="signal-name">
+        <div class="detail-heading"><p class="eyebrow">MEDIÇÃO ESTADUAL</p><span id="signal-status" class="status-tag">Aguardando</span></div>
+        <h2 id="signal-name">Redes alcançáveis</h2><p id="signal-description" class="signal-description">Redes que responderam às sondagens do IODA.</p>
+        <strong class="live-value mono" id="latest-value">—</strong><p class="live-unit" id="signal-unit">blocos /24 alcançáveis</p><p id="measurement-time" class="measurement-time">Nenhuma medição recebida.</p>
+        <div class="measurement-row"><span>Mediana da janela</span><strong id="reference-value">—</strong></div>
+        <div class="measurement-row"><span>Variação vs. mediana</span><strong id="variation-value">—</strong></div>
+        <div class="measurement-row"><span>Intervalos com dados</span><strong id="coverage-value">—</strong></div>
+        <p class="comparison-note">Comparação descritiva. A variação não é uma probabilidade de desastre.</p>
+        <div class="event-summary"><strong id="event-count">Eventos: aguardando consulta</strong><p id="event-description">O IODA detecta interrupções de conectividade; não confirma sua causa.</p></div>
+      </section>
+      <div class="map-bottom"><div class="map-legend"><span><i class="normal-key"></i>Cobertura estadual, sem classificação de risco</span></div><p id="tile-status" class="tile-status" hidden role="status">Mapa-base indisponível. Contorno estadual preservado.</p></div>
+      <section class="timeline-panel live-timeline" aria-labelledby="chart-title">
+        <div class="timeline-heading"><div><h2 id="chart-title">Redes alcançáveis · últimas 24 horas</h2><p id="chart-range">Carregando a janela de observação…</p></div><button id="refresh-button" class="refresh-button">Atualizar</button></div>
+        <svg id="ioda-chart" viewBox="0 0 800 95" preserveAspectRatio="none" role="img" aria-label="Série de conectividade aguardando dados"></svg>
+        <div class="live-chart-axis"><span id="chart-start">—</span><span>Horário de Brasília · lacunas indicam ausência de medição</span><span id="chart-end">—</span></div>
+      </section>
+      <footer class="map-attribution"><span>Dados: <a href="https://ioda.inetintel.cc.gatech.edu/" target="_blank" rel="noreferrer">IODA / Georgia Tech</a></span><span><a href="https://servicodados.ibge.gov.br/api/docs/malhas?versao=3" target="_blank" rel="noreferrer">IBGE</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></span></footer>
+    </main>
+  </div>
+  <script type="module" src="/ioda-view.js"></script>
+</body>
+</html>
