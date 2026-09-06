@@ -94,14 +94,14 @@ def create_server(address: tuple[str, int], document: dict[str, Any], *, ioda_mo
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Mapa do Silêncio — replay local")
+    parser = argparse.ArgumentParser(description="Pulso Territorial — replay local")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--replay", type=Path, help="Caminho de replay JSON autorizado ou sintético")
     args = parser.parse_args()
     document = load_replay(args.replay) if args.replay else build_rio_document()
     server = create_server((args.host, args.port), document)
-    print(f"Mapa do Silêncio em http://{args.host}:{server.server_port}")
+    print(f"Pulso Territorial em http://{args.host}:{server.server_port}")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

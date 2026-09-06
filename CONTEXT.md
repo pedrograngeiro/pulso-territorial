@@ -1,6 +1,6 @@
-# Mapa do Silêncio
+# Pulso Territorial
 
-Vocabulário canônico para análise territorial de sinais de catástrofe. O contexto separa evidência registrada, resultado estatístico e interpretação humana revisável.
+Vocabulário canônico para observação territorial de conectividade, atividade digital e hipóteses de desastre. O contexto separa evidência registrada, resultado estatístico e interpretação humana revisável.
 
 ## Linguagem
 

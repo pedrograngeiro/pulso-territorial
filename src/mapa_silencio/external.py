@@ -31,7 +31,7 @@ def read_json(url, *, headers=None, timeout=12, sleep=time.sleep):
     for attempt in range(3):
         delay = 2 ** attempt
         try:
-            request = Request(url, headers={"Accept": "application/json", "Accept-Encoding": "identity", "User-Agent": "MapaDoSilencio/0.2", **(headers or {})})
+            request = Request(url, headers={"Accept": "application/json", "Accept-Encoding": "identity", "User-Agent": "PulsoTerritorial/0.2", **(headers or {})})
             with opener.open(request, timeout=timeout) as response:
                 raw = response.read(MAX_BYTES+1)
             if len(raw) > MAX_BYTES:

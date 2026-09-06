@@ -65,8 +65,8 @@ def build_sbom() -> dict[str, object]:
         "spdxVersion": "SPDX-2.3",
         "dataLicense": "CC0-1.0",
         "SPDXID": "SPDXRef-DOCUMENT",
-        "name": "Mapa-do-Silencio-0.1.0",
-        "documentNamespace": "https://mapa-do-silencio.invalid/spdx/0.1.0/20260830",
+        "name": "Pulso-Territorial-0.1.0",
+        "documentNamespace": "https://github.com/pedrograngeiro/pulso-territorial/spdx/0.1.0",
         "creationInfo": {
             "created": generated_at(),
             "creators": ["Tool: tools/verify.py"],
@@ -74,8 +74,8 @@ def build_sbom() -> dict[str, object]:
         },
         "packages": [
             {
-                "name": "Mapa do Silêncio",
-                "SPDXID": "SPDXRef-Package-MapaDoSilencio",
+                "name": "Pulso Territorial",
+                "SPDXID": "SPDXRef-Package-PulsoTerritorial",
                 "versionInfo": "0.1.0",
                 "downloadLocation": "NOASSERTION",
                 "filesAnalyzed": False,
@@ -97,8 +97,8 @@ def build_sbom() -> dict[str, object]:
             },
         ],
         "relationships": [
-            {"spdxElementId": "SPDXRef-DOCUMENT", "relationshipType": "DESCRIBES", "relatedSpdxElement": "SPDXRef-Package-MapaDoSilencio"},
-            {"spdxElementId": "SPDXRef-Package-MapaDoSilencio", "relationshipType": "DEPENDS_ON", "relatedSpdxElement": "SPDXRef-Package-CPython"},
+            {"spdxElementId": "SPDXRef-DOCUMENT", "relationshipType": "DESCRIBES", "relatedSpdxElement": "SPDXRef-Package-PulsoTerritorial"},
+            {"spdxElementId": "SPDXRef-Package-PulsoTerritorial", "relationshipType": "DEPENDS_ON", "relatedSpdxElement": "SPDXRef-Package-CPython"},
         ],
     }
 

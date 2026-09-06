@@ -42,7 +42,7 @@ def iso(timestamp: float) -> str:
 def get_json(url: str, timeout: float) -> dict[str, Any]:
     request = Request(url, headers={
         "Accept": "application/json", "Accept-Encoding": "identity",
-        "User-Agent": "MapaDoSilencio/0.2 (local research; IODA public API)",
+        "User-Agent": "PulsoTerritorial/0.2 (local research; IODA public API)",
     })
     try:
         with urlopen(request, timeout=timeout) as response:

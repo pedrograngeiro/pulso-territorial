@@ -32,7 +32,7 @@ class ApiEndToEndTests(unittest.TestCase):
 
         self.assertEqual("simulated", scenario["metadata"]["data_nature"])
         self.assertGreaterEqual(len(scenario["analysis"]["anomalies"]), 3)
-        self.assertIn("Mapa do Silêncio", html)
+        self.assertIn("Pulso Territorial", html)
         self.assertIn("DADOS SINTÉTICOS", html)
         self.assertIn("Linha do tempo", html)
         self.assertTrue(evidence)

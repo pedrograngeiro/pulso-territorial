@@ -1,4 +1,4 @@
-"""Mapa do Silêncio analytical core."""
+"""Pulso Territorial analytical core."""
 
 from .analysis import analyze_dataset
 
